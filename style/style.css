@@ -1,0 +1,58 @@
+/* sofia-sans-condensed-regular - cyrillic-ext_latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Sofia Sans Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/sofia-sans-condensed-v2-cyrillic-ext_latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('../fonts/sofia-sans-condensed-v2-cyrillic-ext_latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+.credential-form{
+    background-color: #FF6B6B;
+    border: #595758 dotted 2px;
+    border-radius: 10px;
+    color: #595758;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-weight: lighter;
+    margin-left: 30%;
+    margin-top: 250px;
+    padding: 10px;
+    width: 40%;
+}
+
+.form-button {
+    background-color: #F8F8FF;
+    border-radius: 12px;
+    color: #595758;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1.1em;
+    margin-left: 40% !important;
+    padding: 10px;
+    transition-duration: 0.4s;
+    width: 20%;
+}
+
+.form-button:hover {
+    background-color: #FFE66D;
+    color: #595758;
+}
+
+.form-element{
+    display: block;
+    margin-left: 20%;
+}
+
+.form-input{
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    width: 60%;
+}
+
+.form-label{
+    font-size: 1.4em;
+}
+
+.site-content{
+    background-color: #F8F8FF;
+}
