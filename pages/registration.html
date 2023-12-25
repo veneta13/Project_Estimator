@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style/style.css"/>
+    <script src="../scripts/registration.js" defer></script>
+    <title>ПроПланер</title>
+</head>
+    <body class="site-content">
+        <form class="credential-form" id="registration_form">
+            <label for="name" class="form-element form-label">Име</label>
+            <input id="name" name="name" class="form-element form-input" type="text" required>
+
+            <label for="email" class="form-element form-label">Имейл</label>
+            <input id="email" name="email" class="form-element form-input" type="email" pattern="*@*" placeholder="mail@example.com" required>
+
+            <label for="password" class="form-element form-label">Парола</label>
+            <input id="password" name="password" class="form-element form-input" type="password" minlength="8" required>
+
+            <label for="confirm_password" class="form-element form-label">Повторете паролата</label>
+            <input id="confirm_password" name="confirm_password" class="form-element form-input" type="password" minlength="8" required>
+
+            <button type="submit" id="submit" class="form-button" onclick="register()">Регистрация</button>
+        </form>
+    </body>
+</html>
