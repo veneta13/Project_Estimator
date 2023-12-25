@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <link href="../style/full_style.css" rel="stylesheet"/>
+    <link href="../style/inner_style.css" rel="stylesheet"/>
+    <link href="../style/manual_estimation.css" rel="stylesheet"/>
+    <title>ПроПланер</title>
+</head>
+<body class="site-content">
+<nav>
+    <nav class="sticky-top">
+        <a class="left-navbar-item" href="./new_project.html">Нов проект</a>
+        <a class="left-navbar-item" href="./my_projects.html">Моите проекти</a>
+        <a class="right-navbar-item" href="./logout.html">Изход</a>
+        <a class="right-navbar-item" href="./profile.html">Моят профил</a>
+    </nav>
+</nav>
+
+<main class="estimation-box">
+    <form class="project-form">
+        <fieldset class="form-row">
+            <label class="form-element form-label" for="project_name">
+                Име на проекта
+            </label>
+            <input class="form-element form-input" id="project_name"
+                    placeholder="Моят проект" type="text" required>
+        </fieldset>
+
+        <fieldset class="form-row">
+            <label class="form-element form-label" for="preset">Тип на проекта</label>
+            <select id="preset">
+                <option>Опция1</option>
+                <option>Опция2</option>
+            </select>
+        </fieldset>
+
+        <button>Запази</button>
+    </form>
+
+
+    <form class="task-form">
+        <fieldset class="form-row">
+            <label class="form-element form-label" for="task_name">Име на задачата</label>
+            <input class="form-element form-input" id="task_name" placeholder="Моята задача" required type="text">
+        </fieldset>
+
+        <fieldset class="form-row">
+            <label class="form-element form-label" for="task-type">Тип на задачата</label>
+            <select id="task-type">
+                <option>Опция1</option>
+                <option>Опция2</option>
+            </select>
+        </fieldset>
+
+        <fieldset class="form-row">
+            <label class="form-element form-label" for="time">Очаквано време за изпълнение</label>
+            <input class="form-element form-input" id="time" min="1" placeholder="2 часа" required
+                   type="number">
+        </fieldset>
+
+        <button>Запази</button>
+    </form>
+</main>
+</body>
+</html>
