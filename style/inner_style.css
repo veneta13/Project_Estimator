@@ -1,0 +1,35 @@
+
+.left-navbar-item {
+    float: left;
+}
+
+.right-navbar-item {
+    float: right;
+}
+
+.site-content {
+    background-color: #1e1d1d;
+    color: #F8F8FF;
+}
+
+.sticky-top {
+    background-color: #FF6B6B;
+    font-weight: bold;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.sticky-top > a {
+    color: #1e1d1d;
+    font-size: 1.2em;
+    margin: 20px 30px 20px 30px;
+    text-decoration: none;
+}
+
+.sticky-top > a:hover {
+    color: #FFE66D;
+}
+
