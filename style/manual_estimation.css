@@ -1,8 +1,39 @@
+.delete-button {
+    background-color: #6b84ff;
+    color: #F8F8FF;
+}
+
+.edit-button {
+    background-color: #FFE66D;
+    color: #1e1d1d;
+}
+
 .estimation-box {
+    display: flex;
     margin-top: 100px;
 }
 
 .form-row {
     border: none;
     display: block;
+}
+
+.user-inputs {
+    width: 50%;
+}
+
+.task-table {
+    float: right;
+    width: 45%;
+}
+
+.table-button {
+    border-radius: 12px;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 0.9em;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 4px;
+    padding: 5px;
+    width: 90%;
 }

@@ -18,49 +18,78 @@
 </nav>
 
 <main class="estimation-box">
-    <form class="project-form">
-        <fieldset class="form-row">
-            <label class="form-element form-label" for="project_name">
-                Име на проекта
-            </label>
-            <input class="form-element form-input" id="project_name"
-                    placeholder="Моят проект" type="text" required>
-        </fieldset>
+    <section class="user-inputs">
+        <form class="project-form">
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="project_name">
+                    Име на проекта
+                </label>
+                <input class="form-element form-input" id="project_name"
+                       placeholder="Моят проект" type="text" required>
+            </fieldset>
 
-        <fieldset class="form-row">
-            <label class="form-element form-label" for="preset">Тип на проекта</label>
-            <select id="preset">
-                <option>Опция1</option>
-                <option>Опция2</option>
-            </select>
-        </fieldset>
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="preset">Тип на проекта</label>
+                <select id="preset">
+                    <option>Опция1</option>
+                    <option>Опция2</option>
+                </select>
+            </fieldset>
 
-        <button>Запази</button>
-    </form>
+            <button>Запази</button>
+        </form>
 
 
-    <form class="task-form">
-        <fieldset class="form-row">
-            <label class="form-element form-label" for="task_name">Име на задачата</label>
-            <input class="form-element form-input" id="task_name" placeholder="Моята задача" required type="text">
-        </fieldset>
+        <form class="task-form">
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="task_name">Име на задачата</label>
+                <input class="form-element form-input" id="task_name" placeholder="Моята задача" required type="text">
+            </fieldset>
 
-        <fieldset class="form-row">
-            <label class="form-element form-label" for="task-type">Тип на задачата</label>
-            <select id="task-type">
-                <option>Опция1</option>
-                <option>Опция2</option>
-            </select>
-        </fieldset>
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="task-type">Тип на задачата</label>
+                <select id="task-type">
+                    <option>Опция1</option>
+                    <option>Опция2</option>
+                </select>
+            </fieldset>
 
-        <fieldset class="form-row">
-            <label class="form-element form-label" for="time">Очаквано време за изпълнение</label>
-            <input class="form-element form-input" id="time" min="1" placeholder="2 часа" required
-                   type="number">
-        </fieldset>
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="time">Очаквано време за изпълнение</label>
+                <input class="form-element form-input" id="time" min="1" placeholder="2 часа" required
+                       type="number">
+            </fieldset>
 
-        <button>Запази</button>
-    </form>
+            <button>Запази</button>
+        </form>
+    </section>
+
+
+    <table class="task-table">
+        <tr>
+            <th>Име на задачата</th>
+            <th>Време (час)</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <td>
+                Планиране
+            </td>
+            <td>
+                10
+            </td>
+            <td>
+                <button class="table-button edit-button">Промени</button>
+            </td>
+            <td>
+                <button class="table-button delete-button">Изтрий</button>
+            </td>
+        </tr>
+
+    </table>
+
 </main>
 </body>
 </html>
