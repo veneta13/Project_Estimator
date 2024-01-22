@@ -3,6 +3,11 @@
 class SessionRequestHandler
 {
 
+    public function getUserName(): string
+    {
+        return $_SESSION['name'];
+    }
+
     public function checkLoginStatus(): bool
     {
         return isset($_SESSION['email']);
@@ -24,6 +29,7 @@ class SessionRequestHandler
 
         if ($loginSuccessful) {
             $_SESSION['email'] = $email;
+            $_SESSION['name'] = $user['name'];
         }
 
         return $loginSuccessful;
