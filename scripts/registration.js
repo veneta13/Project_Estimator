@@ -10,7 +10,7 @@ const register = () => {
         .then(r=> {
             console.log("Fetch response:", r.result);
             if (r.result) {
-                location.replace("./login.html")
+                location.replace("./login.html");
             } else {
                 window.alert('Грешка при регистрацията!');
             }
