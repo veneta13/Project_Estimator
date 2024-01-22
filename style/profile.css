@@ -1,0 +1,20 @@
+.highlighted-yellow {
+    background-color: #FFE66D;
+    color: #1e1d1d;
+    padding: 5px;
+}
+
+.profile {
+    margin-top: 100px;
+}
+
+.profile > h1 {
+    font-size: 3em;
+    text-indent: 100px;
+}
+
+.stats{
+    font-size: 2em;
+    margin-top: 60px;
+    text-indent: 150px;
+}

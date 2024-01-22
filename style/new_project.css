@@ -1,0 +1,22 @@
+.page-link {
+    background-color: #FF6B6B;
+    color: #F8F8FF;
+    font-size: 2.4em;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    background-color: #FFE66D;
+    color: #1e1d1d;
+}
+
+.select_type {
+    margin-top: 300px;
+    text-align: center;
+}
+
+.separator {
+    color: #FF6B6B;
+    font-size: 1.6em;
+}
