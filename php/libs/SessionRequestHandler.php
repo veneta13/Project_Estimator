@@ -17,7 +17,7 @@ class SessionRequestHandler
 
         $user = $selectStatement->fetch();
         if (!$user) {
-            return false; // user does not exist
+            return false;
         }
 
         $loginSuccessful = password_verify($password, $user['password']);
@@ -44,9 +44,10 @@ class SessionRequestHandler
             );
             $insertStatement->execute([
                 'email' => $email,
-                'password' => $password,
+                'password' => password_hash($password, PASSWORD_BCRYPT),
                 'name' => $name
             ]);
+
             return true;
         }
         else {

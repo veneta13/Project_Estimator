@@ -1,7 +1,10 @@
 const register = () => {
-    event.preventDefault()
+    event.preventDefault();
 
     const formData = new FormData(document.getElementById('registration_form'));
+
+    console.log(formData);
+
     fetch('../php/register.php',  {method:'POST', body:formData})
         .then(r=>r.json())
         .then(r=> {
