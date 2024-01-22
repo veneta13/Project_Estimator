@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style/full_style.css"/>
     <link rel="stylesheet" href="../style/outer_style.css"/>
+    <script src="../scripts/login.js" defer></script>
     <title>ПроПланер</title>
 </head>
     <body class="site-content">
-        <form class="credential-form">
-            <label for="name" class="form-element form-label">Име</label>
-            <input id="name" class="form-element form-input" type="text" required>
+        <form class="credential-form" id="login_form">
+            <label for="email" class="form-element form-label">Имейл</label>
+            <input id="email" name="email" class="form-element form-input" type="email" pattern="*@*" placeholder="mail@example.com" required>
 
             <label for="password" class="form-element form-label">Парола</label>
             <input name="password" class="form-element form-input" id="password" type="password" minlength="8" required>
 
-            <button type="submit" id="submit" class="form-button">Вход</button>
+            <button type="submit" id="submit" class="form-button" onclick="login()">Вход</button>
         </form>
     </body>
 </html>
