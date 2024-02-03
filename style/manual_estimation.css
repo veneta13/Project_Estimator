@@ -18,9 +18,9 @@
     font-family: 'Sofia Sans Condensed', sans-serif;
     font-size: 1.1em;
     margin-left: 2%;
-    margin-top: 4px;
+    margin-top: 10px;
     padding: 5px;
-    width: 30%;
+    width: 25%;
 }
 
 .form-row {
@@ -31,11 +31,6 @@
 .task-table {
     float: right;
     width: 45%;
-}
-
-.form-select {
-    font-size: 1.1em;
-    width: 27%;
 }
 
 .table-button {

@@ -30,10 +30,9 @@
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="preset">Тип на проекта</label>
-                <select class="form-select" id="preset">
-                    <option>Опция1</option>
-                    <option>Опция2</option>
-                </select>
+                <input class="form-element form-input only-bottom-border" id="preset" list="presets"
+                       placeholder="Web приложение" type="text" required>
+                <datalist id="presets"></datalist>
             </fieldset>
 
             <button class="form-button">Запази</button>
@@ -48,10 +47,9 @@
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="task-type">Тип на задачата</label>
-                <select class="form-select" id="task-type">
-                    <option>Опция1</option>
-                    <option>Опция2</option>
-                </select>
+                <input class="form-element form-input only-bottom-border" id="task-type" list="task-types"
+                       placeholder="Форма за вход" type="text" required>
+                <datalist id="task-types"></datalist>
             </fieldset>
 
             <fieldset class="form-row">
