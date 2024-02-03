@@ -10,7 +10,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
     }
 
     case 'POST': {
-        $_SESSION['project'] = $_POST;
+        $id = json_encode(file_get_contents("php://input"), true);
+        $id = substr($id, 1, -1);
+        $id = (int)$id;
+        (new SessionRequestHandler())->setCurrentProject($id);
         break;
     }
 

@@ -38,7 +38,10 @@ const loadData = () => {
 
 
 const reroute = (projectId) => {
-    fetch('../php/my_projects.php',  {method:'POST', body:projectId})
+    fetch('../php/my_projects.php',  {
+            method:'POST',
+            body: projectId
+    })
         .then(r=>r.json())
         .then(r=> {
             location.replace("./manual_estimation.html");
