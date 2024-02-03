@@ -65,4 +65,15 @@ class SessionRequestHandler
     {
         session_destroy();
     }
+
+    public function getUserProjects(): array
+    {
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE owner = ?');
+        $selectStatement->execute([$_SESSION['name']]);
+
+        $projects = $selectStatement->fetchAll();
+        return $projects;
+    }
 }

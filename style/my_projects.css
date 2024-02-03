@@ -1,0 +1,40 @@
+.project-button {
+    border-radius: 12px;
+    height: 3em;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1em;
+    margin-top: 4px;
+    padding: 5px;
+    width: 20%;
+}
+
+.project-owner {
+    align-self: center;
+    color: #1e1d1d;
+    font-size: 1.5em;
+    position: fixed;
+    right: 35%;
+    text-decoration: underline;
+}
+
+.project-section {
+    background-color: #FFE66D;
+    border-radius: 4px;
+    color: #1e1d1d;
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-left: 20%;
+    padding: 10px;
+    width: 60%;
+}
+
+.project-title {
+    align-self: center;
+    font-size: 1.6em;
+}
+
+.projects-box {
+    margin-top: 100px;
+}
