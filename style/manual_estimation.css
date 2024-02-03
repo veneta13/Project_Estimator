@@ -13,18 +13,29 @@
     margin-top: 100px;
 }
 
+.form-button {
+    border-radius: 12px;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1.1em;
+    margin-left: 2%;
+    margin-top: 4px;
+    padding: 5px;
+    width: 30%;
+}
+
 .form-row {
     border: none;
     display: block;
 }
 
-.user-inputs {
-    width: 50%;
-}
-
 .task-table {
     float: right;
     width: 45%;
+}
+
+.form-select {
+    font-size: 1.1em;
+    width: 27%;
 }
 
 .table-button {
@@ -36,4 +47,12 @@
     margin-top: 4px;
     padding: 5px;
     width: 90%;
+}
+
+.table-text {
+    font-size: 1.2em;
+}
+
+.user-inputs {
+    width: 50%;
 }

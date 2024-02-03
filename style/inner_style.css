@@ -1,3 +1,11 @@
+.form-label {
+    display: block;
+    font-size: 1.3em;
+}
+
+.form-input {
+    font-size: 1.1em;
+}
 
 .left-navbar-item {
     float: left;
@@ -33,3 +41,18 @@
     color: #FFE66D;
 }
 
+.task-form {
+    margin-top: 50px;
+}
+
+.user-inputs {
+    padding: 10px;
+}
+
+tbody {
+    vertical-align: top;
+}
+
+th {
+    height: 50px !important;
+}

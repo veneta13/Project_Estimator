@@ -24,31 +24,31 @@
                 <label class="form-element form-label" for="project_name">
                     Име на проекта
                 </label>
-                <input class="form-element form-input" id="project_name"
+                <input class="form-element form-input only-bottom-border" id="project_name"
                        placeholder="Моят проект" type="text" required>
             </fieldset>
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="preset">Тип на проекта</label>
-                <select id="preset">
+                <select class="form-select" id="preset">
                     <option>Опция1</option>
                     <option>Опция2</option>
                 </select>
             </fieldset>
 
-            <button>Запази</button>
+            <button class="form-button">Запази</button>
         </form>
 
 
         <form class="task-form">
             <fieldset class="form-row">
                 <label class="form-element form-label" for="task_name">Име на задачата</label>
-                <input class="form-element form-input" id="task_name" placeholder="Моята задача" required type="text">
+                <input class="form-element form-input only-bottom-border" id="task_name" placeholder="Моята задача" required type="text">
             </fieldset>
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="task-type">Тип на задачата</label>
-                <select id="task-type">
+                <select class="form-select" id="task-type">
                     <option>Опция1</option>
                     <option>Опция2</option>
                 </select>
@@ -60,30 +60,30 @@
                        type="number">
             </fieldset>
 
-            <button>Запази</button>
+            <button class="form-button">Добави задача</button>
         </form>
     </section>
 
 
     <table class="task-table">
         <tr>
-            <th>Име на задачата</th>
-            <th>Време (час)</th>
-            <th></th>
-            <th></th>
+            <th class="table-text">Име на задачата</th>
+            <th class="table-text">Време (час)</th>
+            <th class="table-text"></th>
+            <th class="table-text"></th>
         </tr>
 
         <tr>
-            <td>
+            <td class="table-text">
                 Планиране
             </td>
-            <td>
+            <td class="table-text">
                 10
             </td>
-            <td>
+            <td class="table-text">
                 <button class="table-button edit-button">Промени</button>
             </td>
-            <td>
+            <td class="table-text">
                 <button class="table-button delete-button">Изтрий</button>
             </td>
         </tr>
