@@ -1,0 +1,18 @@
+<?php
+require_once "bootstrap.php";
+
+$result = null;
+switch ($_SERVER['REQUEST_METHOD']) {
+    case 'POST': {
+        (new SessionRequestHandler())->unsetCurrentProject();
+        break;
+    }
+
+    default:
+    {
+        $result = "Unknown";
+        break;
+    }
+}
+
+echo json_encode(['result' => $result], JSON_UNESCAPED_UNICODE);

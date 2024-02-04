@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../style/full_style.css"/>
     <link rel="stylesheet" href="../style/inner_style.css"/>
     <link rel="stylesheet" href="../style/new_project.css"/>
+    <script src="../scripts/new_project.js"></script>
     <title>ПроПланер</title>
 </head>
 <body class="site-content">
@@ -17,9 +18,9 @@
     </nav>
 </nav>
     <section class="select_type">
-        <a class="page-link" href="./manual_estimation.html">Ръчна оценка</a>
+        <button class="page-link" onclick="rerouteManual()">Ръчна оценка</button>
         <p class="separator">или</p>
-        <a  class="page-link" href="./automatic_estimation.html">Автоматична оценка</a>
+        <button  class="page-link" onclick="rerouteAutomatic()">Автоматична оценка</button>
     </section>
 <main class="profile">
 </main>

@@ -4,12 +4,13 @@ const loadData = () => {
         .then(r=> {
             console.log("Fetch response:", r.result);
 
-            const project_name = document.getElementById("project_name");
-            project_name.value = r.result['name'];
+            if (r.result.length !== 0) {
+                const project_name = document.getElementById("project_name");
+                project_name.value = r.result['name'];
 
-            const preset = document.getElementById("preset");
-            preset.value = r.result['type'];
-
+                const preset = document.getElementById("preset");
+                preset.value = r.result['type'];
+            }
         });
 }
 

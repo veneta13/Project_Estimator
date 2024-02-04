@@ -82,14 +82,25 @@ class SessionRequestHandler
         $_SESSION['project_id'] = $projectId;
     }
 
+    public function unsetCurrentProject() : void
+    {
+        $_SESSION['project_id'] = -1;
+    }
+
     public function getCurrentProject(): array
     {
         $conn = (new Db())->getConnection();
 
-        $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE project_id = ?');
-        $selectStatement->execute([$_SESSION['project_id']]);
+        $project = array();
 
-        $project = $selectStatement->fetch();
+        if ($_SESSION['project_id'] != -1)
+        {
+            $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE project_id = ?');
+            $selectStatement->execute([$_SESSION['project_id']]);
+
+            $project = $selectStatement->fetch();
+        }
+
         return $project;
     }
 }
