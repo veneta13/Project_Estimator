@@ -30,6 +30,7 @@
 
 .task-table {
     float: right;
+    table-layout: fixed;
     width: 45%;
 }
 

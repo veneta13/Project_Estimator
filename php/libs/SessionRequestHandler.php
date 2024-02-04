@@ -119,7 +119,12 @@ class SessionRequestHandler
             $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE project_id = ?');
             $selectStatement->execute([$_SESSION['project_id']]);
 
-            $project = $selectStatement->fetch();
+            $project[] = $selectStatement->fetch();
+
+            $selectStatement = $conn->prepare('SELECT * FROM `tasks` WHERE project_id = ?');
+            $selectStatement->execute([$_SESSION['project_id']]);
+
+            $project[] = $selectStatement->fetchAll();
         }
 
         return $project;

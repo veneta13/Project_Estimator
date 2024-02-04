@@ -43,26 +43,29 @@
         <form class="task-form" id="task_form">
             <fieldset class="form-row">
                 <label class="form-element form-label" for="task_name">Име на задачата</label>
-                <input class="form-element form-input only-bottom-border" id="task_name" name="task_name" placeholder="Моята задача"
+                <input class="form-element form-input only-bottom-border" id="task_name" name="task_name"
+                       placeholder="Моята задача"
                        required type="text">
             </fieldset>
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="task_type">Тип на задачата</label>
-                <input class="form-element form-input only-bottom-border"  name="task_type" id="task_type" list="task_types"
+                <input class="form-element form-input only-bottom-border" id="task_type" list="task_types"
+                       name="task_type"
                        placeholder="Форма за вход" required type="text">
                 <datalist id="task_types"></datalist>
             </fieldset>
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="time">Очаквано време за изпълнение</label>
-                <input class="form-element form-input" name="time" id="time" min="1" placeholder="2 часа" required
+                <input class="form-element form-input" id="time" min="1" name="time" placeholder="2 часа" required
                        type="number">
             </fieldset>
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="task_user">Назначен потребител</label>
-                <input class="form-element form-input only-bottom-border" name="task_user" id="task_user" list="task_users"
+                <input class="form-element form-input only-bottom-border" id="task_user" list="task_users"
+                       name="task_user"
                        placeholder="my-user" required type="text">
                 <datalist id="task_users"></datalist>
             </fieldset>
@@ -72,31 +75,13 @@
     </section>
 
 
-    <table class="task-table">
+    <table class="task-table" id="task_table">
         <tr>
             <th class="table-text">Име на задачата</th>
             <th class="table-text">Време (час)</th>
             <th class="table-text">Назначен</th>
             <th class="table-text"></th>
             <th class="table-text"></th>
-        </tr>
-
-        <tr>
-            <td class="table-text">
-                Планиране
-            </td>
-            <td class="table-text">
-                10
-            </td>
-            <td class="table-text">
-                ivan
-            </td>
-            <td class="table-text">
-                <button class="table-button edit-button">Промени</button>
-            </td>
-            <td class="table-text">
-                <button class="table-button delete-button">Изтрий</button>
-            </td>
         </tr>
 
     </table>
