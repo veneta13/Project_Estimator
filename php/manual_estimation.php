@@ -11,7 +11,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case 'POST':
     {
-        if (in_array('project_name', $_POST))
+        if (isset($_POST['project_name']))
         {
             $result = (new SessionRequestHandler())->saveProject($_POST['project_name'], $_POST['preset']);
         }
