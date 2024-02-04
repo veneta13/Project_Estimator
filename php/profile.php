@@ -5,7 +5,7 @@ $result = null;
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
     {
-        $result = (new SessionRequestHandler())->getUserName();
+        $result = (new SessionRequestHandler())->getUserProfile();
         break;
     }
 

@@ -2,12 +2,6 @@
 
 class SessionRequestHandler
 {
-
-    public function getUserName(): string
-    {
-        return $_SESSION['name'];
-    }
-
     public function checkLoginStatus(): bool
     {
         return isset($_SESSION['email']);
@@ -63,6 +57,28 @@ class SessionRequestHandler
     public function logout()
     {
         session_destroy();
+    }
+
+    public function getUserProfile(): array
+    {
+        $conn = (new Db())->getConnection();
+
+        $result = array();
+        $result['name'] = $_SESSION['name'];
+
+        $selectStatement = $conn->prepare('SELECT COUNT(*) FROM `tasks` WHERE user = ?');
+        $selectStatement->execute([$_SESSION['name']]);
+        $result['task_count'] = $selectStatement->fetchColumn();
+
+        $selectStatement = $conn->prepare('SELECT SUM(time) as sum FROM `tasks` WHERE user = ?');
+        $selectStatement->execute([$_SESSION['name']]);
+        $result['task_time'] = $selectStatement->fetchColumn();
+
+        $selectStatement = $conn->prepare('SELECT COUNT(*) as sum FROM `project_users` WHERE user = ? AND accepted = FALSE');
+        $selectStatement->execute([$_SESSION['name']]);
+        $result['invitations'] = $selectStatement->fetchColumn();
+
+        return $result;
     }
 
     public function getUserProjects(): array
