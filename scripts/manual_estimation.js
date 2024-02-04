@@ -1,7 +1,7 @@
 const loadData = () => {
-    fetch('../php/manual_estimation.php',  {method:'GET'})
-        .then(r=>r.json())
-        .then(r=> {
+    fetch('../php/manual_estimation.php', {method: 'GET'})
+        .then(r => r.json())
+        .then(r => {
             console.log("Fetch response:", r.result);
 
             if (r.result.length !== 0) {

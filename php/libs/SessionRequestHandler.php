@@ -55,8 +55,7 @@ class SessionRequestHandler
             ]);
 
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -77,12 +76,12 @@ class SessionRequestHandler
         return $projects;
     }
 
-    public function setCurrentProject(int $projectId) : void
+    public function setCurrentProject(int $projectId): void
     {
         $_SESSION['project_id'] = $projectId;
     }
 
-    public function unsetCurrentProject() : void
+    public function unsetCurrentProject(): void
     {
         $_SESSION['project_id'] = -1;
     }
@@ -93,8 +92,7 @@ class SessionRequestHandler
 
         $project = array();
 
-        if ($_SESSION['project_id'] != -1)
-        {
+        if ($_SESSION['project_id'] != -1) {
             $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE project_id = ?');
             $selectStatement->execute([$_SESSION['project_id']]);
 

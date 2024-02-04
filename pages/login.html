@@ -2,20 +2,21 @@
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style/full_style.css"/>
-    <link rel="stylesheet" href="../style/outer_style.css"/>
-    <script src="../scripts/login.js" defer></script>
+    <link href="../style/full_style.css" rel="stylesheet"/>
+    <link href="../style/outer_style.css" rel="stylesheet"/>
+    <script defer src="../scripts/login.js"></script>
     <title>ПроПланер</title>
 </head>
-    <body class="site-content">
-        <form class="credential-form" id="login_form">
-            <label for="email" class="form-element form-label">Имейл</label>
-            <input id="email" name="email" class="form-element form-input" type="email" pattern="*@*" placeholder="mail@example.com" required>
+<body class="site-content">
+<form class="credential-form" id="login_form">
+    <label class="form-element form-label" for="email">Имейл</label>
+    <input class="form-element form-input" id="email" name="email" pattern="*@*" placeholder="mail@example.com"
+           required type="email">
 
-            <label for="password" class="form-element form-label">Парола</label>
-            <input name="password" class="form-element form-input" id="password" type="password" minlength="8" required>
+    <label class="form-element form-label" for="password">Парола</label>
+    <input class="form-element form-input" id="password" minlength="8" name="password" required type="password">
 
-            <button type="submit" id="submit" class="form-button" onclick="login()">Вход</button>
-        </form>
-    </body>
+    <button class="form-button" id="submit" onclick="login()" type="submit">Вход</button>
+</form>
+</body>
 </html>

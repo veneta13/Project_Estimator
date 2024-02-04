@@ -1,7 +1,7 @@
 const loadData = () => {
-    fetch('../php/my_projects.php',  {method:'GET'})
-        .then(r=>r.json())
-        .then(r=> {
+    fetch('../php/my_projects.php', {method: 'GET'})
+        .then(r => r.json())
+        .then(r => {
             console.log("Fetch response:", r.result);
             if (r.result) {
                 let item;
@@ -28,7 +28,9 @@ const loadData = () => {
                     button.classList.add('project-button');
                     button.innerText = "Отвори";
                     button.value = item['project_id'];
-                    button.onclick =  function() { reroute(this.value); };
+                    button.onclick = function () {
+                        reroute(this.value);
+                    };
                 }
             } else {
                 window.alert('Нямате създадени проекти!');
@@ -38,12 +40,12 @@ const loadData = () => {
 
 
 const reroute = (projectId) => {
-    fetch('../php/my_projects.php',  {
-            method:'POST',
-            body: projectId
+    fetch('../php/my_projects.php', {
+        method: 'POST',
+        body: projectId
     })
-        .then(r=>r.json())
-        .then(r=> {
+        .then(r => r.json())
+        .then(r => {
             location.replace("./manual_estimation.html");
         });
 }

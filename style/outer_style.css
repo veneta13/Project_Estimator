@@ -1,4 +1,4 @@
-.credential-form{
+.credential-form {
     background-color: #FF6B6B;
     border: #1e1d1d dotted 2px;
     border-radius: 10px;
@@ -27,21 +27,21 @@
     color: #1e1d1d;
 }
 
-.form-element{
+.form-element {
     display: block;
     margin-left: 20%;
 }
 
-.form-input{
+.form-input {
     font-size: 1.1em;
     margin-bottom: 20px;
     width: 60%;
 }
 
-.form-label{
+.form-label {
     font-size: 1.4em;
 }
 
-.site-content{
+.site-content {
     background-color: #F8F8FF;
 }

@@ -9,7 +9,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     }
 
-    case 'POST': {
+    case 'POST':
+    {
         $id = json_encode(file_get_contents("php://input"), true);
         $id = substr($id, 1, -1);
         $id = (int)$id;

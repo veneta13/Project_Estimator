@@ -3,7 +3,8 @@ require_once "bootstrap.php";
 
 $result = null;
 switch ($_SERVER['REQUEST_METHOD']) {
-    case 'POST': {
+    case 'POST':
+    {
         (new SessionRequestHandler())->unsetCurrentProject();
         break;
     }

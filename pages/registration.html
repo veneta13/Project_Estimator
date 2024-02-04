@@ -2,26 +2,28 @@
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style/full_style.css"/>
-    <link rel="stylesheet" href="../style/outer_style.css"/>
-    <script src="../scripts/registration.js" defer></script>
+    <link href="../style/full_style.css" rel="stylesheet"/>
+    <link href="../style/outer_style.css" rel="stylesheet"/>
+    <script defer src="../scripts/registration.js"></script>
     <title>ПроПланер</title>
 </head>
-    <body class="site-content">
-        <form class="credential-form" id="registration_form">
-            <label for="name" class="form-element form-label">Име</label>
-            <input id="name" name="name" class="form-element form-input" type="text" required>
+<body class="site-content">
+<form class="credential-form" id="registration_form">
+    <label class="form-element form-label" for="name">Име</label>
+    <input class="form-element form-input" id="name" name="name" required type="text">
 
-            <label for="email" class="form-element form-label">Имейл</label>
-            <input id="email" name="email" class="form-element form-input" type="email" pattern="*@*" placeholder="mail@example.com" required>
+    <label class="form-element form-label" for="email">Имейл</label>
+    <input class="form-element form-input" id="email" name="email" pattern="*@*" placeholder="mail@example.com"
+           required type="email">
 
-            <label for="password" class="form-element form-label">Парола</label>
-            <input id="password" name="password" class="form-element form-input" type="password" minlength="8" required>
+    <label class="form-element form-label" for="password">Парола</label>
+    <input class="form-element form-input" id="password" minlength="8" name="password" required type="password">
 
-            <label for="confirm_password" class="form-element form-label">Повторете паролата</label>
-            <input id="confirm_password" name="confirm_password" class="form-element form-input" type="password" minlength="8" required>
+    <label class="form-element form-label" for="confirm_password">Повторете паролата</label>
+    <input class="form-element form-input" id="confirm_password" minlength="8" name="confirm_password" required
+           type="password">
 
-            <button type="submit" id="submit" class="form-button" onclick="register()">Регистрация</button>
-        </form>
-    </body>
+    <button class="form-button" id="submit" onclick="register()" type="submit">Регистрация</button>
+</form>
+</body>
 </html>
