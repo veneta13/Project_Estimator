@@ -153,7 +153,7 @@ class SessionRequestHandler
             $selectStatement = $conn->prepare('INSERT INTO `tasks` (name, type, time, project_id, user) VALUES (?, ?, ?, ?, ?)');
             $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $_SESSION['project_id'], $taskUser]);
         } else {
-            $selectStatement = $conn->prepare('UPDATE `tasks` SET name = ?, type = ?, time = ?, user ? WHERE task_id = ?');
+            $selectStatement = $conn->prepare('UPDATE `tasks` SET name = ?, type = ?, time = ?, user = ? WHERE task_id = ?');
             $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $taskUser, $_SESSION['task_id']]);
         }
 
