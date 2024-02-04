@@ -60,6 +60,13 @@
                        type="number">
             </fieldset>
 
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="task-user">Назначен потребител</label>
+                <input class="form-element form-input only-bottom-border" id="task-user" list="task-users"
+                       placeholder="my-user" required type="text">
+                <datalist id="task-users"></datalist>
+            </fieldset>
+
             <button class="form-button">Добави задача</button>
         </form>
     </section>
@@ -69,6 +76,7 @@
         <tr>
             <th class="table-text">Име на задачата</th>
             <th class="table-text">Време (час)</th>
+            <th class="table-text">Назначен</th>
             <th class="table-text"></th>
             <th class="table-text"></th>
         </tr>
@@ -79,6 +87,9 @@
             </td>
             <td class="table-text">
                 10
+            </td>
+            <td class="table-text">
+                ivan
             </td>
             <td class="table-text">
                 <button class="table-button edit-button">Промени</button>
