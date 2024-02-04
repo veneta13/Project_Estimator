@@ -40,34 +40,34 @@
         </form>
 
 
-        <form class="task-form">
+        <form class="task-form" id="task_form">
             <fieldset class="form-row">
                 <label class="form-element form-label" for="task_name">Име на задачата</label>
-                <input class="form-element form-input only-bottom-border" id="task_name" placeholder="Моята задача"
+                <input class="form-element form-input only-bottom-border" id="task_name" name="task_name" placeholder="Моята задача"
                        required type="text">
             </fieldset>
 
             <fieldset class="form-row">
-                <label class="form-element form-label" for="task-type">Тип на задачата</label>
-                <input class="form-element form-input only-bottom-border" id="task-type" list="task-types"
+                <label class="form-element form-label" for="task_type">Тип на задачата</label>
+                <input class="form-element form-input only-bottom-border"  name="task_type" id="task_type" list="task_types"
                        placeholder="Форма за вход" required type="text">
-                <datalist id="task-types"></datalist>
+                <datalist id="task_types"></datalist>
             </fieldset>
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="time">Очаквано време за изпълнение</label>
-                <input class="form-element form-input" id="time" min="1" placeholder="2 часа" required
+                <input class="form-element form-input" name="time" id="time" min="1" placeholder="2 часа" required
                        type="number">
             </fieldset>
 
             <fieldset class="form-row">
-                <label class="form-element form-label" for="task-user">Назначен потребител</label>
-                <input class="form-element form-input only-bottom-border" id="task-user" list="task-users"
+                <label class="form-element form-label" for="task_user">Назначен потребител</label>
+                <input class="form-element form-input only-bottom-border" name="task_user" id="task_user" list="task_users"
                        placeholder="my-user" required type="text">
-                <datalist id="task-users"></datalist>
+                <datalist id="task_users"></datalist>
             </fieldset>
 
-            <button class="form-button">Добави задача</button>
+            <button class="form-button" onclick="saveTask()">Добави задача</button>
         </form>
     </section>
 

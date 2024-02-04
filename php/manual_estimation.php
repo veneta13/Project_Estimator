@@ -11,7 +11,20 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case 'POST':
     {
-        $result = (new SessionRequestHandler())->saveProject($_POST['project_name'], $_POST['preset']);
+        if (in_array('project_name', $_POST))
+        {
+            $result = (new SessionRequestHandler())->saveProject($_POST['project_name'], $_POST['preset']);
+        }
+        else
+        {
+            $result = (new SessionRequestHandler())->saveTask(
+                $_POST['task_name'],
+                $_POST['task_type'],
+                $_POST['time'],
+                $_POST['task_user']
+            );
+        }
+
         break;
     }
 

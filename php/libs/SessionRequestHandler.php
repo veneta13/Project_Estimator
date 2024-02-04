@@ -79,11 +79,18 @@ class SessionRequestHandler
     public function setCurrentProject(int $projectId): void
     {
         $_SESSION['project_id'] = $projectId;
+        $_SESSION['task_id'] = -1;
     }
 
     public function unsetCurrentProject(): void
     {
         $_SESSION['project_id'] = -1;
+        $_SESSION['task_id'] = -1;
+    }
+
+    public function setTask(int $taskId): void
+    {
+        $_SESSION['task_id'] = $taskId;
     }
 
     public function getCurrentProject(): array
@@ -112,6 +119,21 @@ class SessionRequestHandler
         } else {
             $selectStatement = $conn->prepare('UPDATE `projects` SET name = ?, type = ? WHERE project_id = ?');
             $result = $selectStatement->execute([$projectName, $projectType, $_SESSION['project_id']]);
+        }
+
+        return $result;
+    }
+
+    public function saveTask(string $tasktName, string $taskType, int $taskTime, string $taskUser): bool
+    {
+        $conn = (new Db())->getConnection();
+
+        if ($_SESSION['task_id'] == -1) {
+            $selectStatement = $conn->prepare('INSERT INTO `tasks` (name, type, time, project_id, user) VALUES (?, ?, ?, ?, ?)');
+            $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $_SESSION['project_id'], $taskUser]);
+        } else {
+            $selectStatement = $conn->prepare('UPDATE `tasks` SET name = ?, type = ?, time = ?, user ? WHERE task_id = ?');
+            $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $taskUser, $_SESSION['task_id']]);
         }
 
         return $result;
