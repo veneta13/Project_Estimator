@@ -14,4 +14,20 @@ const loadData = () => {
         });
 }
 
+const saveProject = () => {
+    event.preventDefault();
+
+    const formData = new FormData(document.getElementById('project_form'));
+
+    fetch('../php/manual_estimation.php', {method: 'POST', body: formData})
+        .then(r => r.json())
+        .then(r => {
+            if (r.result) {
+                window.alert("Промените са запазени успешно.")
+            } else {
+                window.alert("Възникна грешка. Моля, опитайте отново.")
+            }
+        });
+};
+
 document.addEventListener('DOMContentLoaded', loadData, false);

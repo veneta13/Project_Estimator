@@ -20,23 +20,23 @@
 
 <main class="estimation-box">
     <section class="user-inputs">
-        <form class="project-form">
+        <form class="project-form" id="project_form">
             <fieldset class="form-row">
                 <label class="form-element form-label" for="project_name">
                     Име на проекта
                 </label>
                 <input class="form-element form-input only-bottom-border" id="project_name"
-                       placeholder="Моят проект" required type="text">
+                       name="project_name" placeholder="Моят проект" required type="text">
             </fieldset>
 
             <fieldset class="form-row">
                 <label class="form-element form-label" for="preset">Тип на проекта</label>
                 <input class="form-element form-input only-bottom-border" id="preset" list="presets"
-                       placeholder="Web приложение" required type="text">
+                       name="preset" placeholder="Web приложение" required type="text">
                 <datalist id="presets"></datalist>
             </fieldset>
 
-            <button class="form-button">Запази</button>
+            <button class="form-button" onclick="saveProject()">Запази</button>
         </form>
 
 

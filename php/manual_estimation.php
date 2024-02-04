@@ -9,6 +9,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
     }
 
+    case 'POST':
+    {
+        $result = (new SessionRequestHandler())->saveProject($_POST['project_name'], $_POST['preset']);
+        break;
+    }
+
     default:
     {
         $result = "Unknown";

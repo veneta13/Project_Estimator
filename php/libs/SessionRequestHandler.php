@@ -101,4 +101,19 @@ class SessionRequestHandler
 
         return $project;
     }
+
+    public function saveProject(string $projectName, string $projectType): bool
+    {
+        $conn = (new Db())->getConnection();
+
+        if ($_SESSION['project_id'] == -1) {
+            $selectStatement = $conn->prepare('INSERT INTO `projects` (name, type, owner) VALUES (?, ?, ?)');
+            $result = $selectStatement->execute([$projectName, $projectType, $_SESSION['name']]);
+        } else {
+            $selectStatement = $conn->prepare('UPDATE `projects` SET name = ?, type = ? WHERE project_id = ?');
+            $result = $selectStatement->execute([$projectName, $projectType, $_SESSION['project_id']]);
+        }
+
+        return $result;
+    }
 }
