@@ -109,6 +109,16 @@ class SessionRequestHandler
         $_SESSION['task_id'] = $taskId;
     }
 
+    public function deleteTask(int $taskId): bool
+    {
+        $_SESSION['task_id'] = -1;
+
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('DELETE FROM `tasks` WHERE task_id = ?');
+        return $selectStatement->execute([$taskId]);
+    }
+
     public function getCurrentProject(): array
     {
         $conn = (new Db())->getConnection();

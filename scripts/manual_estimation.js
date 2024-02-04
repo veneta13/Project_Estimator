@@ -59,6 +59,9 @@ const loadData = () => {
                         delete_button.classList.add('table-button');
                         delete_button.classList.add('delete-button');
                         delete_button.value = item['task_id'];
+                        delete_button.onclick = function () {
+                            deleteTask(this.value);
+                        };
 
                         delete_cell.appendChild(delete_button);
                     }
@@ -76,9 +79,9 @@ const saveProject = () => {
         .then(r => r.json())
         .then(r => {
             if (r.result) {
-                window.alert("Промените са запазени успешно.")
+                window.alert("Промените са запазени успешно.");
             } else {
-                window.alert("Възникна грешка. Моля, опитайте отново.")
+                window.alert("Възникна грешка. Моля, опитайте отново.");
             }
         });
 };
@@ -90,9 +93,9 @@ const saveTask = () => {
         .then(r => r.json())
         .then(r => {
             if (r.result) {
-                window.alert("Промените са запазени успешно.")
+                window.alert("Промените са запазени успешно.");
             } else {
-                window.alert("Възникна грешка. Моля, опитайте отново.")
+                window.alert("Възникна грешка. Моля, опитайте отново.");
             }
         });
 };
@@ -114,6 +117,22 @@ const setTask = (taskIdAndIndex) => {
     document.getElementById('time').value = row.cells[1].innerText;
     document.getElementById('task_user').value = row.cells[2].innerText;
     document.getElementById('task_type').value = row.cells[3].innerText;
+}
+
+const deleteTask = (taskId) => {
+    fetch('../php/manual_estimation.php', {
+        method: 'DELETE',
+        body: taskId
+    })
+        .then(r => r.json())
+        .then(r => {
+            if (r.result) {
+                window.alert("Задачата е изтрита успешно.");
+                location.reload();
+            } else {
+                window.alert("Възникна грешка. Моля, опитайте отново.");
+            }
+        });
 }
 
 document.addEventListener('DOMContentLoaded', loadData, false);
