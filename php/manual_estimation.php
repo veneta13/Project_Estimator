@@ -24,7 +24,17 @@ switch ($_SERVER['REQUEST_METHOD']) {
                 $_POST['task_user']
             );
         }
+        (new SessionRequestHandler())->setTask(-1);
 
+        break;
+    }
+
+    case 'PUT':
+    {
+        $id = json_encode(file_get_contents("php://input"), true);
+        $id = substr($id, 1, -1);
+        $id = (int)$id;
+        (new SessionRequestHandler())->setTask($id);
         break;
     }
 

@@ -33,6 +33,10 @@ const loadData = () => {
                         user_cell.innerText = item['user'];
                         user_cell.classList.add('table-text');
 
+                        let type_cell = new_row.insertCell();
+                        type_cell.innerText = item['type'];
+                        type_cell.classList.add('table-text');
+
                         let edit_cell = new_row.insertCell();
                         edit_cell.classList.add('table-text');
 
@@ -40,7 +44,10 @@ const loadData = () => {
                         edit_button.innerText = 'Промени';
                         edit_button.classList.add('table-button');
                         edit_button.classList.add('edit-button');
-                        edit_button.value = item['task_id'];
+                        edit_button.value = item['task_id'] + ',' + index;
+                        edit_button.onclick = function () {
+                            setTask(this.value);
+                        };
 
                         edit_cell.appendChild(edit_button);
 
@@ -89,5 +96,24 @@ const saveTask = () => {
             }
         });
 };
+
+const setTask = (taskIdAndIndex) => {
+    taskIdAndIndex = taskIdAndIndex.split(',');
+    let taskId = taskIdAndIndex[0];
+    let index = parseInt(taskIdAndIndex[1]) + 1;
+
+
+    fetch('../php/manual_estimation.php', {
+        method: 'PUT',
+        body: taskId
+    });
+
+    let row = document.getElementById('task_table').getElementsByTagName('tr')[index];
+
+    document.getElementById('task_name').value = row.cells[0].innerText;
+    document.getElementById('time').value = row.cells[1].innerText;
+    document.getElementById('task_user').value = row.cells[2].innerText;
+    document.getElementById('task_type').value = row.cells[3].innerText;
+}
 
 document.addEventListener('DOMContentLoaded', loadData, false);

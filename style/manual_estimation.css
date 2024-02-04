@@ -20,7 +20,7 @@
     margin-left: 2%;
     margin-top: 10px;
     padding: 5px;
-    width: 25%;
+    width: 37%;
 }
 
 .form-row {
@@ -31,7 +31,7 @@
 .task-table {
     float: right;
     table-layout: fixed;
-    width: 45%;
+    width: 60%;
 }
 
 .table-button {
@@ -50,5 +50,5 @@
 }
 
 .user-inputs {
-    width: 50%;
+    width: 35%;
 }
