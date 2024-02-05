@@ -87,6 +87,8 @@ const saveProject = () => {
 };
 
 const saveTask = () => {
+    event.preventDefault();
+
     const formData = new FormData(document.getElementById('task_form'));
 
     fetch('../php/manual_estimation.php', {method: 'POST', body: formData})

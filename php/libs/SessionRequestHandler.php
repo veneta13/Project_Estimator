@@ -177,13 +177,20 @@ class SessionRequestHandler
             }
 
             if ($result) {
-                $selectStatement = $conn->prepare('SELECT * FROM `project_users` WHERE user = ? AND project_id = ?');
-                $selectStatement->execute([$taskUser, $_SESSION['task_id']]);
-                $user_exists_in_project = $selectStatement->fetch();
+                $selectStatement = $conn->prepare('SELECT EXISTS (SELECT * FROM `project_users` WHERE user = ? AND project_id = ?)');
+                $selectStatement->execute([$taskUser, $_SESSION['project_id']]);
+                $user_exists_in_project = $selectStatement->fetchColumn();
 
-                if (!$user_exists_in_project) {
-                    $selectStatement = $conn->prepare('INSERT INTO `project_users` (user, project_id, accepted) VALUES (?, ?, FALSE)');
-                    $result = $selectStatement->execute([$taskUser, $_SESSION['project_id']]);
+                if ($user_exists_in_project == 0) {
+                    if (strcmp($_SESSION['name'], $taskUser)) {
+                        $accepted = 1;
+                    }
+                    else {
+                        $accepted = 0;
+                    }
+
+                    $selectStatement = $conn->prepare('INSERT INTO `project_users` (user, project_id, accepted) VALUES (?, ?, ?)');
+                    $result = $selectStatement->execute([$taskUser, $_SESSION['project_id'], $accepted]);
                 }
             }
         }
