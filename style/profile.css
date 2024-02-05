@@ -1,7 +1,40 @@
+.accept-button {
+    background-color: yellowgreen;
+    border-radius: 12px;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1.1em;
+    vertical-align: middle;
+    width: 45%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.deny-button {
+    background-color: #FF6B6B;
+    border-radius: 12px;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1.1em;
+    width: 45%;
+}
+
 .highlighted-yellow {
     background-color: #FFE66D;
     color: #1e1d1d;
     padding: 5px;
+}
+
+.invitation {
+    background-color: #FFE66D;
+    border-radius: 10px;
+    color: #1e1d1d;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
 }
 
 .profile {
@@ -13,8 +46,22 @@
     text-indent: 100px;
 }
 
+.project-owner {
+    align-self: center;
+    color: #1e1d1d;
+    font-size: 1.5em;
+    position: fixed;
+    right: 45%;
+    text-decoration: underline;
+}
+
 .stats {
     font-size: 2em;
     margin-top: 60px;
     text-indent: 150px;
+}
+
+#invitation_box {
+    margin-left: 200px;
+    margin-right: 200px;
 }

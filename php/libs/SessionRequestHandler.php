@@ -74,11 +74,49 @@ class SessionRequestHandler
         $selectStatement->execute([$_SESSION['name']]);
         $result['task_time'] = $selectStatement->fetchColumn();
 
-        $selectStatement = $conn->prepare('SELECT COUNT(*) as sum FROM `project_users` WHERE user = ? AND accepted = FALSE');
+        $selectStatement = $conn->prepare('SELECT COUNT(*) as count FROM `project_users` WHERE user = ? AND accepted = FALSE');
         $selectStatement->execute([$_SESSION['name']]);
         $result['invitations'] = $selectStatement->fetchColumn();
 
         return $result;
+    }
+
+    public function getUserInvitations(): array
+    {
+        $conn = (new Db())->getConnection();
+
+        $result = array();
+
+        $selectStatement = $conn->prepare('SELECT * FROM `project_users` WHERE user = ? AND accepted = FALSE');
+        $selectStatement->execute([$_SESSION['name']]);
+        $projects = $selectStatement->fetchAll();
+
+        foreach ($projects as $project) {
+            $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE project_id = ?');
+            $selectStatement->execute([$project['project_id']]);
+            $result[] = $selectStatement->fetch();
+        }
+
+        return $result;
+    }
+
+    public function acceptInvitation($projectId): bool
+    {
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('UPDATE `project_users` SET accepted = TRUE WHERE project_id = ? AND user = ?');
+        return $selectStatement->execute([$projectId, $_SESSION['name']]);
+    }
+
+    public function denyInvitation($projectId): bool
+    {
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('DELETE FROM `project_users` WHERE project_id = ? AND user = ?');
+        $selectStatement->execute([$projectId, $_SESSION['name']]);
+
+        $selectStatement = $conn->prepare('DELETE FROM `tasks` WHERE project_id = ? AND user = ?');
+        return $selectStatement->execute([$projectId, $_SESSION['name']]);
     }
 
     public function getUserProjects(): array
@@ -184,8 +222,7 @@ class SessionRequestHandler
                 if ($user_exists_in_project == 0) {
                     if (strcmp($_SESSION['name'], $taskUser)) {
                         $accepted = 0;
-                    }
-                    else {
+                    } else {
                         $accepted = 1;
                     }
 
