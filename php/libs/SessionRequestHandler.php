@@ -147,6 +147,10 @@ class SessionRequestHandler
         if ($_SESSION['project_id'] == -1) {
             $selectStatement = $conn->prepare('INSERT INTO `projects` (name, type, owner) VALUES (?, ?, ?)');
             $result = $selectStatement->execute([$projectName, $projectType, $_SESSION['name']]);
+
+            $selectStatement = $conn->prepare('SELECT MAX(project_id) FROM `projects`');
+            $result = $selectStatement->execute();
+            $_SESSION['project_id'] = $selectStatement->fetchColumn();
         } else {
             $selectStatement = $conn->prepare('UPDATE `projects` SET name = ?, type = ? WHERE project_id = ?');
             $result = $selectStatement->execute([$projectName, $projectType, $_SESSION['project_id']]);
@@ -159,12 +163,16 @@ class SessionRequestHandler
     {
         $conn = (new Db())->getConnection();
 
-        if ($_SESSION['task_id'] == -1) {
-            $selectStatement = $conn->prepare('INSERT INTO `tasks` (name, type, time, project_id, user) VALUES (?, ?, ?, ?, ?)');
-            $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $_SESSION['project_id'], $taskUser]);
+        if ($_SESSION['project_id'] == -1) {
+            $result = false;
         } else {
-            $selectStatement = $conn->prepare('UPDATE `tasks` SET name = ?, type = ?, time = ?, user = ? WHERE task_id = ?');
-            $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $taskUser, $_SESSION['task_id']]);
+            if ($_SESSION['task_id'] == -1) {
+                $selectStatement = $conn->prepare('INSERT INTO `tasks` (name, type, time, project_id, user) VALUES (?, ?, ?, ?, ?)');
+                $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $_SESSION['project_id'], $taskUser]);
+            } else {
+                $selectStatement = $conn->prepare('UPDATE `tasks` SET name = ?, type = ?, time = ?, user = ? WHERE task_id = ?');
+                $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $taskUser, $_SESSION['task_id']]);
+            }
         }
 
         return $result;
