@@ -148,9 +148,11 @@ class SessionRequestHandler
             $selectStatement = $conn->prepare('INSERT INTO `projects` (name, type, owner) VALUES (?, ?, ?)');
             $result = $selectStatement->execute([$projectName, $projectType, $_SESSION['name']]);
 
-            $selectStatement = $conn->prepare('SELECT MAX(project_id) FROM `projects`');
-            $result = $selectStatement->execute();
-            $_SESSION['project_id'] = $selectStatement->fetchColumn();
+            if ($result) {
+                $selectStatement = $conn->prepare('SELECT MAX(project_id) FROM `projects`');
+                $result = $selectStatement->execute();
+                $_SESSION['project_id'] = $selectStatement->fetchColumn();
+            }
         } else {
             $selectStatement = $conn->prepare('UPDATE `projects` SET name = ?, type = ? WHERE project_id = ?');
             $result = $selectStatement->execute([$projectName, $projectType, $_SESSION['project_id']]);
