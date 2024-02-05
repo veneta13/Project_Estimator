@@ -132,7 +132,9 @@ class SessionRequestHandler
         foreach ($projects as $project) {
             $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE project_id = ?');
             $selectStatement->execute([$project['project_id']]);
-            $result[] = $selectStatement->fetch();
+            $received = $selectStatement->fetch();
+            $received['not_owned'] = (bool)strcmp($_SESSION['name'], $received['owner']);
+            $result[] = $received;
         }
 
         return $result;
@@ -196,6 +198,20 @@ class SessionRequestHandler
 
         $selectStatement = $conn->prepare('DELETE FROM `tasks` WHERE task_id = ?');
         return $selectStatement->execute([$taskId]);
+    }
+
+    public function deleteProject(int $projectId): bool
+    {
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('DELETE FROM `projects` WHERE project_id = ?');
+        $selectStatement->execute([$projectId]);
+
+        $selectStatement = $conn->prepare('DELETE FROM `project_users` WHERE project_id = ?');
+        $selectStatement->execute([$projectId]);
+
+        $selectStatement = $conn->prepare('DELETE FROM `tasks` WHERE project_id = ?');
+        return $selectStatement->execute([$projectId]);
     }
 
     public function getCurrentProject(): array

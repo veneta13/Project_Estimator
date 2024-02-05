@@ -2,7 +2,6 @@ const loadData = () => {
     fetch('../php/my_projects.php', {method: 'GET'})
         .then(r => r.json())
         .then(r => {
-            console.log("Fetch response:", r.result);
             if (r.result) {
                 let item;
                 const parent = document.getElementById("my_projects");
@@ -23,14 +22,29 @@ const loadData = () => {
                     project_owner.classList.add('project-owner');
                     project_owner.innerText = item['owner'];
 
-                    const button = document.createElement("button");
-                    child_section.appendChild(button);
-                    button.classList.add('project-button');
-                    button.innerText = "Отвори";
-                    button.value = item['project_id'];
-                    button.onclick = function () {
+                    const button_section = document.createElement("section");
+                    button_section.classList.add('buttons');
+                    child_section.appendChild(button_section);
+
+                    const open_button = document.createElement("button");
+                    button_section.appendChild(open_button);
+                    open_button.classList.add('project-button');
+                    open_button.innerText = "Отвори";
+                    open_button.value = item['project_id'];
+                    open_button.onclick = function () {
                         reroute(this.value);
                     };
+
+                    if (!item['not_owned']) {
+                        const delete_button = document.createElement("button");
+                        button_section.appendChild(delete_button);
+                        delete_button.classList.add('delete-button');
+                        delete_button.innerText = "Изтрий";
+                        delete_button.value = item['project_id'];
+                        delete_button.onclick = function () {
+                            deleteProject(this.value);
+                        };
+                    }
                 }
             } else {
                 window.alert('Нямате създадени проекти!');
@@ -46,6 +60,20 @@ const reroute = (projectId) => {
     })
         .then(r => {
             location.replace("./manual_estimation.html");
+        });
+}
+
+
+const deleteProject = (projectId) => {
+    fetch('../php/my_projects.php', {
+        method: 'DELETE',
+        body: projectId
+    })
+        .then(r => {
+            window.alert('Проектът е изтрит.');
+        })
+        .then(r => {
+            location.reload();
         });
 }
 
