@@ -183,10 +183,10 @@ class SessionRequestHandler
 
                 if ($user_exists_in_project == 0) {
                     if (strcmp($_SESSION['name'], $taskUser)) {
-                        $accepted = 1;
+                        $accepted = 0;
                     }
                     else {
-                        $accepted = 0;
+                        $accepted = 1;
                     }
 
                     $selectStatement = $conn->prepare('INSERT INTO `project_users` (user, project_id, accepted) VALUES (?, ?, ?)');
