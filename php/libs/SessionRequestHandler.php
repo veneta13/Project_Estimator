@@ -175,6 +175,17 @@ class SessionRequestHandler
                 $selectStatement = $conn->prepare('UPDATE `tasks` SET name = ?, type = ?, time = ?, user = ? WHERE task_id = ?');
                 $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $taskUser, $_SESSION['task_id']]);
             }
+
+            if ($result) {
+                $selectStatement = $conn->prepare('SELECT * FROM `project_users` WHERE user = ? AND project_id = ?');
+                $selectStatement->execute([$taskUser, $_SESSION['task_id']]);
+                $user_exists_in_project = $selectStatement->fetch();
+
+                if (!$user_exists_in_project) {
+                    $selectStatement = $conn->prepare('INSERT INTO `project_users` (user, project_id, accepted) VALUES (?, ?, FALSE)');
+                    $result = $selectStatement->execute([$taskUser, $_SESSION['project_id']]);
+                }
+            }
         }
 
         return $result;
