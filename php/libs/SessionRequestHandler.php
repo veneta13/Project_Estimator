@@ -138,6 +138,39 @@ class SessionRequestHandler
         return $result;
     }
 
+    public function getPresets(): array
+    {
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('SELECT DISTINCT type FROM `projects`');
+        $selectStatement->execute();
+        return $selectStatement->fetchAll();
+    }
+
+    public function getTaskTypes(): array
+    {
+        $conn = (new Db())->getConnection();
+
+        if ($_SESSION['project_id'] == -1) {
+            return array();
+        }
+
+        $selectStatement = $conn->prepare('SELECT DISTINCT type FROM `tasks` WHERE project_id IN ' .
+            '(SELECT project_id FROM `projects` WHERE type = (SELECT type from `projects` WHERE project_id = ?))');
+        $selectStatement->execute([$_SESSION['project_id']]);
+        return $selectStatement->fetchAll();
+    }
+
+    public function getProjectUsers(): array
+    {
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('SELECT DISTINCT user FROM `project_users` WHERE project_id = ?');
+        $selectStatement->execute([$_SESSION['project_id']]);
+        return $selectStatement->fetchAll();
+    }
+
+
     public function setCurrentProject(int $projectId): void
     {
         $_SESSION['project_id'] = $projectId;
