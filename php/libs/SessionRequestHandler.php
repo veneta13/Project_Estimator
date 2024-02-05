@@ -123,11 +123,19 @@ class SessionRequestHandler
     {
         $conn = (new Db())->getConnection();
 
-        $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE owner = ?');
-        $selectStatement->execute([$_SESSION['name']]);
+        $result = array();
 
+        $selectStatement = $conn->prepare('SELECT * FROM `project_users` WHERE user = ? AND accepted = TRUE');
+        $selectStatement->execute([$_SESSION['name']]);
         $projects = $selectStatement->fetchAll();
-        return $projects;
+
+        foreach ($projects as $project) {
+            $selectStatement = $conn->prepare('SELECT * FROM `projects` WHERE project_id = ?');
+            $selectStatement->execute([$project['project_id']]);
+            $result[] = $selectStatement->fetch();
+        }
+
+        return $result;
     }
 
     public function setCurrentProject(int $projectId): void
