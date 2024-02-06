@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="../style/full_style.css" rel="stylesheet"/>
+    <link href="../style/inner_style.css" rel="stylesheet"/>
+    <link href="../style/estimation.css" rel="stylesheet"/>
+    <script src="../scripts/automatic_estimation.js"></script>
+    <title>ПроПланер</title>
 </head>
-<body>
+<body class="site-content">
+<nav>
+    <nav class="sticky-top">
+        <a class="left-navbar-item" href="./new_project.html">Нов проект</a>
+        <a class="left-navbar-item" href="./my_projects.html">Моите проекти</a>
+        <a class="right-navbar-item" href="./logout.html">Изход</a>
+        <a class="right-navbar-item" href="./profile.html">Моят профил</a>
+    </nav>
+</nav>
 
+<main class="estimation-box">
+    <section class="user-inputs">
+        <form class="project-form" id="project_form">
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="project_name">
+                    Име на проекта
+                </label>
+                <input class="form-element form-input only-bottom-border" id="project_name"
+                       name="project_name" placeholder="Моят проект" required type="text">
+            </fieldset>
+
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="preset">Тип на проекта</label>
+                <input class="form-element form-input only-bottom-border" id="preset" list="presets"
+                       name="preset" placeholder="Web приложение" required type="text">
+                <datalist id="presets"></datalist>
+            </fieldset>
+
+            <button class="form-button" onclick="saveProject()">Запази</button>
+        </form>
+
+
+        <form class="task-form" id="task_form">
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="task_name">Име на задачата</label>
+                <input class="form-element form-input only-bottom-border" id="task_name" name="task_name"
+                       placeholder="Моята задача"
+                       required type="text">
+            </fieldset>
+
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="task_type">Тип на задачата</label>
+                <input class="form-element form-input only-bottom-border" id="task_type" list="task_types"
+                       name="task_type"
+                       placeholder="Форма за вход" required type="text">
+                <datalist id="task_types"></datalist>
+            </fieldset>
+
+            <fieldset class="form-row">
+                <label class="form-element form-label" for="task_user">Назначен потребител</label>
+                <input class="form-element form-input only-bottom-border" id="task_user" list="task_users"
+                       name="task_user"
+                       placeholder="my-user" required type="text">
+                <datalist id="task_users"></datalist>
+            </fieldset>
+
+            <button class="form-button" onclick="saveTask()">Добави задача</button>
+        </form>
+    </section>
+
+
+    <table class="task-table" id="task_table">
+        <tr>
+            <th class="table-text">Име на задачата</th>
+            <th class="table-text">Време (час)</th>
+            <th class="table-text">Назначен</th>
+            <th class="table-text">Тип</th>
+            <th class="table-text"></th>
+            <th class="table-text"></th>
+        </tr>
+
+    </table>
+
+</main>
 </body>
 </html>

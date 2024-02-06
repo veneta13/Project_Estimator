@@ -1,4 +1,5 @@
 <?php
+
 require_once "bootstrap.php";
 
 $result = null;
@@ -14,12 +15,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         if (isset($_POST['project_name'])) {
             $result = (new SessionRequestHandler())->saveProject($_POST['project_name'], $_POST['preset']);
         } else {
-            $result = (new SessionRequestHandler())->saveTask(
+            $result = (new SessionRequestHandler())->saveAutomaticTask(
                 $_POST['task_name'],
                 $_POST['task_type'],
-                $_POST['time'],
-                $_POST['task_user'],
-                false
+                $_POST['task_user']
             );
         }
         (new SessionRequestHandler())->setTask(-1);

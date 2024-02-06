@@ -100,7 +100,7 @@ class SessionRequestHandler
         return $result;
     }
 
-    public function acceptInvitation($projectId): bool
+    public function acceptInvitation(int $projectId): bool
     {
         $conn = (new Db())->getConnection();
 
@@ -108,7 +108,7 @@ class SessionRequestHandler
         return $selectStatement->execute([$projectId, $_SESSION['name']]);
     }
 
-    public function denyInvitation($projectId): bool
+    public function denyInvitation(int $projectId): bool
     {
         $conn = (new Db())->getConnection();
 
@@ -259,7 +259,22 @@ class SessionRequestHandler
         return $result;
     }
 
-    public function saveTask(string $tasktName, string $taskType, int $taskTime, string $taskUser): bool
+    public function saveAutomaticTask(string $taskName, string $taskType, string $taskUser): bool
+    {
+        $conn = (new Db())->getConnection();
+
+        $selectStatement = $conn->prepare('SELECT AVG(time) FROM `task_history` WHERE type = ?');
+        $selectStatement->execute([$taskType]);
+        $timeNeeded = $selectStatement->fetchColumn();
+
+        if (is_null($timeNeeded)) {
+            $timeNeeded = 0;
+        }
+
+        return $this->saveTask($taskName, $taskType, $timeNeeded, $taskUser, true);
+    }
+
+    public function saveTask(string $tasktName, string $taskType, int $taskTime, string $taskUser, bool $isAutomatic): bool
     {
         $conn = (new Db())->getConnection();
 
@@ -270,8 +285,10 @@ class SessionRequestHandler
                 $selectStatement = $conn->prepare('INSERT INTO `tasks` (name, type, time, project_id, user) VALUES (?, ?, ?, ?, ?)');
                 $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $_SESSION['project_id'], $taskUser]);
 
-                $selectStatement = $conn->prepare('INSERT INTO `task_history` (type, time) VALUES (?, ?)');
-                $selectStatement->execute([$taskType, $taskTime]);
+                if (!$isAutomatic) {
+                    $selectStatement = $conn->prepare('INSERT INTO `task_history` (type, time) VALUES (?, ?)');
+                    $selectStatement->execute([$taskType, $taskTime]);
+                }
             } else {
                 $selectStatement = $conn->prepare('UPDATE `tasks` SET name = ?, type = ?, time = ?, user = ? WHERE task_id = ?');
                 $result = $selectStatement->execute([$tasktName, $taskType, $taskTime, $taskUser, $_SESSION['task_id']]);
