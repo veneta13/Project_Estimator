@@ -1,3 +1,29 @@
+.big-text {
+    display: block;
+    margin-left: 20%;
+    margin-top: 270px;
+    width: 60%;
+}
+
+.big-text > h1 {
+    color: #FF6B6B;
+    font-size: 5em;
+}
+
+.big-text > h2 {
+    color: #1e1d1d;
+    font-size: 2em;
+}
+
+.bottom-nav {
+    display: flex;
+    bottom: 40px;
+    justify-content: space-between;
+    margin-left: 40%;
+    position: fixed;
+    width: 20%;
+}
+
 .credential-form {
     background-color: #FF6B6B;
     border: #1e1d1d dotted 2px;
@@ -40,6 +66,12 @@
 
 .form-label {
     font-size: 1.4em;
+}
+
+.page-link {
+    color: #6b84ff;
+    font-size: 1.3em;
+    text-decoration: none;
 }
 
 .site-content {
