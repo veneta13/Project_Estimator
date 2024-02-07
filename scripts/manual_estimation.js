@@ -171,4 +171,9 @@ const deleteTask = (taskId) => {
         });
 }
 
+
+const printTasks = () => {
+    window.open('../pages/print_view.html', '_blank');
+}
+
 document.addEventListener('DOMContentLoaded', loadData, false);
